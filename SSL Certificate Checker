@@ -1,0 +1,18 @@
+File: tools/vulnerability/ssl_checker.py
+Description: Checks SSL certificate validity for a given domain
+pyhton code 
+import ssl
+import socket
+from datetime import datetime
+
+def check_ssl_certificate(host):
+    context = ssl.create_default_context()
+    with socket.create_connection((host, 443)) as sock:
+        with context.wrap_socket(sock, server_hostname=host) as ssock:
+            cert = ssock.getpeercert()
+            expiry_date = datetime.strptime(cert['notAfter'], "%b %d %H:%M:%S %Y %Z")
+            print(f"[+] SSL Certificate is valid until: {expiry_date}")
+
+if __name__ == "__main__":
+    target_host = input("Enter the domain (e.g., example.com): ")
+    check_ssl_certificate(target_host)
