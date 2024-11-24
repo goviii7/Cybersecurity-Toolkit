@@ -1,0 +1,27 @@
+Cybersecurity-Toolkit/
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── tools/
+│   ├── network/
+│   │   ├── port_scanner.py
+│   │   ├── subnet_scanner.py
+│   │   └── ping_sweeper.py
+│   ├── password/
+│   │   ├── password_strength_checker.py
+│   │   └── password_generator.py
+│   ├── vulnerability/
+│   │   ├── directory_bruteforce.py
+│   │   └── ssl_checker.py
+│   └── malware/
+│       ├── file_hash_checker.py
+│       └── malware_behavior_analyzer.py
+├── docs/
+│   ├── usage.md
+│   ├── installation.md
+│   └── contribution_guidelines.md
+├── tests/
+│   ├── test_port_scanner.py
+│   ├── test_password_strength.py
+│   └── ...
+└── requirements.txt
