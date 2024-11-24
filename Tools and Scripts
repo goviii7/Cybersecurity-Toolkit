@@ -1,0 +1,22 @@
+1. Port Scanner
+File: tools/network/port_scanner.py
+Description: Scans a target IP address for open ports.
+python code
+import socket
+from concurrent.futures import ThreadPoolExecutor
+
+def scan_port(ip, port):
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(0.5)
+            s.connect((ip, port))
+            print(f"[+] Port {port} is open")
+    except:
+        pass
+
+if __name__ == "__main__":
+    target_ip = input("Enter the target IP: ")
+    ports = range(1, 1025)  # Scans ports 1 to 1024
+    with ThreadPoolExecutor(max_workers=50) as executor:
+        for port in ports:
+            executor.submit(scan_port, target_ip, port)
